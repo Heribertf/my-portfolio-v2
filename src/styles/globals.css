@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables */
+:root {
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+  --dark-bg: #0f172a;
+  --dark-surface: #1e293b;
+  --dark-card: #334155;
+  --dark-text: #f8fafc;
+  --dark-secondary: #cbd5e1;
+  --light-bg: #ffffff;
+  --light-surface: #f8fafc;
+  --light-text: #0f172a;
+  --light-secondary: #475569;
+  --success: #10b981;
+}
+
+/* Base styling */
+body {
+  /* @apply transition-colors duration-300; */
+transition-property: background-color, color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Theming */
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* .light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+} */
+
+
+.light header {
+  background: #f8fafc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* border-color: #e5e7eb; */
+}
+
+.light header .nav-link {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.light header .gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.light h1, 
+.light h2, 
+.light h3,
+.light .gradient-text {
+  color: var(--text-primary);
+}
+
+.light p,
+.light li {
+  color: var(--text-secondary);
+}
+
+/* Enhanced Light Mode Styling */
+.light {
+  --text-primary: #0f172a;  /* slate-900 */
+  --text-secondary: #475569; /* slate-600 */
+  --bg-surface: #f8fafc;    /* slate-50 */
+  --bg-card: #ffffff;
+  --border-light: #e2e8f0;  /* slate-200 */
+}
+
+.light body {
+  color: var(--text-primary);
+}
+
+.light .text-dark-300,
+.light .text-dark-700 {
+  color: var(--text-secondary);
+}
+
+.light .glass-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.light .skill-bar {
+  background-color: rgba(203, 213, 225, 0.4);
+}
+
+.light .border-dark-700 {
+  border-color: var(--border-light);
+}
+
+.light .bg-dark-700 {
+  background-color: var(--bg-surface);
+}
+
+.light .bg-dark-800 {
+  background-color: var(--bg-card);
+}
+
+.light .btn-hover-effect::before {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+}
+
+
+/* Gradient text using CSS vars */
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  backdrop-filter: blur(12px) saturate(180%);
+  background-color: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* .light .glass-card {
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+} */
+
+/* Typing animation */
+.typing {
+  border-right: 2px solid;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--primary);
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 1.5s ease-in-out;
+}
+
+/* Rotating words animation */
+.rotate-words span {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: rotateWords 12s linear infinite 0s;
+}
+
+.rotate-words span:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.rotate-words span:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.rotate-words span:nth-child(4) {
+  animation-delay: 9s;
+}
+
+@keyframes rotateWords {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  2%,
+  18% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  20% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Section fade-in on scroll */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* .section {
+  opacity: 1 !important;
+  transform: none !important;
+  min-height: 100vh;
+  padding: 2rem 0;
+} */
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile menu slide */
+/* .mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+} */
+
+/* Enhanced Mobile Menu */
+.mobile-menu {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(30, 41, 59, 0.98) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.light .mobile-menu {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu nav button {
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu nav button:hover {
+  background: rgba(59, 130, 246, 0.2) !important;
+}
+
+.light .mobile-menu nav button:hover {
+  background: rgba(59, 130, 246, 0.1) !important;
+}
+
+.mobile-menu nav button.active {
+  background: rgba(59, 130, 246, 0.25) !important;
+  color: var(--primary);
+}
+
+
+/* Footer specific styles */
+.light footer {
+  background: #f8fafc;
+  border-color: #e5e7eb;
+}
+
+.light footer a {
+  color: #4b5563;
+}
+
+.light footer .gradient-text {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  backdrop-filter: blur(2px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link.active {
+  color: rgb(59, 130, 246);
+}
+
+/* Particle animation base */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Button hover shimmer effect */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-hover-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.btn-hover-effect:hover::before {
+  left: 100%;
+}
+
+/* Active nav links by theme */
+.dark .nav-link.active {
+  color: var(--primary);
+}
+
+.light .nav-link.active {
+  color: var(--secondary);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.light .card-hover:hover {
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* Skill bar styles */
+.skill-bar {
+  height: 8px;
+  border-radius: 4px;
+  background-color: rgba(203, 213, 225, 0.2);
+}
+
+.skill-bar-fill {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Project card image container */
+/* .project-image {
+  aspect-ratio: 16/9;
+  transition: transform 0.3s ease;
+} */
+
+/* .project-card:hover .project-image {
+  transform: scale(1.03);
+} */
+
+/* Project card enhancements */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.project-image-container {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.project-image {
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Metrics badges */
+.metric-badge {
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode adjustments */
+.light .project-card {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.light .project-card:hover {
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* Link buttons */
+.project-links {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light .project-links {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* Project card sizing */
+.project-card {
+  flex: 0 0 auto;
+  width: 90vw;
+}
+
+@media (min-width: 768px) {
+  .project-card {
+    width: 450px;
+  }
+}
+
+/* Contact form input styles */
+.contact-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .contact-input{
+  color: #0f172a;
+}
+
+.light .contact-input{
+  color: #475569;
+}
+
+.contact-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Form feedback borders */
+.form-error {
+  border-color: #ef4444;
+}
+
+.form-success {
+  border-color: var(--success);
+}
