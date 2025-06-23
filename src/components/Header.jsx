@@ -86,7 +86,7 @@ export default function Header({
 
                         <button
                             onClick={toggleMobileMenu}
-                            className="p-2 rounded-full hover:bg-gray-800 transition-colors text-white"
+                            className="p-2 rounded-full hover:bg-gray-800 transition-colors dark:text-white light:text-gray-800"
                             aria-label="Toggle menu"
                         >
                             {mobileMenuOpen ? (
